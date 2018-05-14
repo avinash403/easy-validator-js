@@ -1,0 +1,22 @@
+{
+  "name": "validator-js",
+  "version": "1.0.0",
+  "description": "Easy validation of forms in using javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinash403/validator-js.git"
+  },
+  "author": "avinash kumar <ak403602@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avinash403/validator-js/issues"
+  },
+  "homepage": "https://github.com/avinash403/validator-js#readme",
+  "dependencies": {
+    "validator": "^10.2.0"
+  }
+}
