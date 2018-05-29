@@ -3,7 +3,7 @@ Provides an easy way to validate forms and gives custom error messages.
 Ideal with frameworks like reactJs and vueJs
 
 ### Installation by npm
-	$ npm install validator-js --save 
+	$ npm install easy-validator-js --save 
 
 ### Usage Example
 ``` 
