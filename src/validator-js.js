@@ -1,6 +1,6 @@
 import NpmValidator from 'validator';
 import isEmpty from 'lodash/isEmpty';
-import { exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength } from 'messages';
+import { exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength } from './messages';
 
 /**
  * @param Function  handles messages 
