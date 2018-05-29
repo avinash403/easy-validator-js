@@ -1,5 +1,5 @@
 {
-  "name": "validator-js",
+  "name": "easy-validator-js",
   "version": "1.0.0",
   "description": "Easy validation of forms in using javascript",
   "main": "src/validator-js.js",
