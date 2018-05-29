@@ -1,34 +1,28 @@
-export const message={
-    //validation errors
-    "required":"This field is required",
-    "invalidEmail": "Invalid email",
-    "invalidMobile":"Invalid mobile number",
-    "notAlpha":"Input should only consist of alphabets",
-    "notAlphanumeric":"Input should only consist of alphabets and numbers",
-    "passwordNotMatch":"Password doesn't match",
-    "invalidDate":"Not a valid date",
-    "notNumber":"Input should only consist of numbers",
-    "passwordIsSame":"new password is same as old. Please choose a different password.",
+export const message = {
 
-    //non-validation errors
-    "badConnection":"Unable to connect",
-    "errorAtServer":"Some error occurred at the server",
-    "notEntered":"NOT ENTERED",//if a field is empty this will be displayed instead of empty text
-    "notAssigned":"NOT ASSIGNED"//if a workout is not assigned, this will be displayed instead of empty field
+    required: "this field is required",
+
+    max_length_exceeded: "maximum length exceeded",
+
+    not_enough_length: "too short",
+
+    invalid_email: "Invalid email",
+
+    not_alpha: "input should only consist of alphabets",
+
+    not_alphanumeric: "input should only consist of alphabets and numbers",
+
+    invalid_number: "Input should only consist of numbers",
+
+    more_than_max_value: "maximum value exceeded",
+
+    less_than_min_value: "too small",
+
+    password_is_same: "new password is same as old. Please choose a different password",
+
+    password_does_not_match: "Password doesn't match",
+
+    invalid_date: "not a valid date",
+
+    invalid_mobile: "invalid mobile number",
 };
-
-export function exceededMaxLength(length) {
-    return "length cannot be more than "+length+" characters";
-}
-
-export function notEnoughLength(length) {
-    return "length should be at least "+length+" characters";
-}
-
-export function moreThanMaxValue(value) {
-    return `value more than ${value} is not allowed`;
-}
-
-export function lessThanMinValue(value) {
-    return `value less than ${value} is not allowed`;
-}
