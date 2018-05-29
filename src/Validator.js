@@ -4,12 +4,11 @@ import {exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoug
 
 
 /** Validate takes array of field, value and property and validate values against the properties
- *  =================================================================================
+ *  for eg.
  *  array = {
  *           field1 :[value1, property1, property2],
  *           field2:[value2,property1,property2,property3]
  *          }
- *  =================================================================================
  *  @param array =>array as described above
  *  @return {object,boolean}=>{(key,error),true/false}. IF there error field is empty, isValid will be true ELSE false
  *  */
