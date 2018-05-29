@@ -6,13 +6,13 @@ export const message = {
 
     not_enough_length: "too short",
 
-    invalid_email: "Invalid email",
+    invalid_email: "invalid email",
 
     not_alpha: "input should only consist of alphabets",
 
     not_alphanumeric: "input should only consist of alphabets and numbers",
 
-    invalid_number: "Input should only consist of numbers",
+    invalid_number: "input should only consist of numbers",
 
     more_than_max_value: "maximum value exceeded",
 
@@ -20,7 +20,7 @@ export const message = {
 
     password_is_same: "new password is same as old. Please choose a different password",
 
-    password_does_not_match: "Password doesn't match",
+    password_does_not_match: "Password does not match",
 
     invalid_date: "not a valid date",
 

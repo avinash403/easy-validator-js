@@ -1,7 +1,7 @@
-import {Validation} from 'validator'
+import {Validator} from 'validator-js'
 
 
-const validator = new Validation;
+const validator = new Validator;
 
 describe('validate',()=>{
 

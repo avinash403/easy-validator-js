@@ -1,11 +1,11 @@
-import Validator from '../node_modules/validator';
+import NpmValidator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 import { exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength } from 'messages';
 
 /**
  * @param Function  handles messages 
  */
-export function Validation(getMessage) {
+export function Validator(getMessage) {
 
     if (getMessage === undefined) {
         getMessage = function(key) {
@@ -68,26 +68,26 @@ export function Validation(getMessage) {
 
 
     function isRequired(value) {
-        if (Validator.isEmpty(value)) {
+        if (NpmValidator.isEmpty(value)) {
             return getMessage("required");
         }
     }
 
 
     function max(maxLength, value) {
-        if (!Validator.isLength(value, 0, maxLength)) {
+        if (!NpmValidator.isLength(value, 0, maxLength)) {
             return getMessage("max_length_exceeded", maxLength);
         }
     }
 
     function min(minLength, value) {
-        if (!Validator.isLength(value, minLength, 100)) {
+        if (!NpmValidator.isLength(value, minLength, 100)) {
             return getMessage("not_enough_length", minLength);
         }
     }
 
     function isEmail(value) {
-        if (!Validator.isEmail(value)) {
+        if (!NpmValidator.isEmail(value)) {
             return getMessage("invalid_email");
         }
     }
@@ -98,7 +98,7 @@ export function Validation(getMessage) {
      * @param {string} value            value input by user
      * */
     function isAlpha(strict = false, value) {
-        if (!Validator.isEmpty(value)) {
+        if (!NpmValidator.isEmpty(value)) {
 
             //making a copy of value to avoid mutating the original copy
             let valueCopy = value.slice(0)
@@ -109,7 +109,7 @@ export function Validation(getMessage) {
             }
 
             //allow space
-            if (!Validator.isAlpha(valueCopy)) {
+            if (!NpmValidator.isAlpha(valueCopy)) {
                 return getMessage("not_alpha");
             }
         }
@@ -121,7 +121,7 @@ export function Validation(getMessage) {
      * @param {string} value            value input by user
      * */
     function isAlphanumeric(strict = false, value) {
-        if (!Validator.isEmpty(value)) {
+        if (!NpmValidator.isEmpty(value)) {
 
             //making a copy of value to avoid mutating the original copy
             let valueCopy = value.slice(0)
@@ -131,15 +131,15 @@ export function Validation(getMessage) {
                 valueCopy = valueCopy.replace(/ /g, '')
             }
 
-            if (!Validator.isAlphanumeric(valueCopy)) {
+            if (!NpmValidator.isAlphanumeric(valueCopy)) {
                 return getMessage("not_alphanumeric");
             }
         }
     }
 
     function isNumber(value) {
-        if (!Validator.isEmpty(value)) {
-            if (!Validator.isInt(value)) {
+        if (!NpmValidator.isEmpty(value)) {
+            if (!NpmValidator.isInt(value)) {
                 return getMessage("invalid_number");
             }
         }
@@ -150,7 +150,7 @@ export function Validation(getMessage) {
      * @param value => input value
      */
     function maxValue(maxVal, value) {
-        if (!Validator.isEmpty(value)) {
+        if (!NpmValidator.isEmpty(value)) {
             if (!(value <= maxVal)) {
                 return getMessage("more_than_max_value");
             }
@@ -163,7 +163,7 @@ export function Validation(getMessage) {
      */
     function minValue(minVal, value) {
         const stringValue = `${value}`;
-        if (!Validator.isEmpty(stringValue)) {
+        if (!NpmValidator.isEmpty(stringValue)) {
             if (!(value >= minVal)) {
                 return getMessage("not_enough_length");
             }
@@ -171,20 +171,20 @@ export function Validation(getMessage) {
     }
 
     function passwordMatch(password, passwordConfirm) {
-        if (!Validator.equals(password, passwordConfirm)) {
+        if (!NpmValidator.equals(password, passwordConfirm)) {
             return getMessage("password_does_not_match");
         }
     }
 
 
     function shouldNotMatch(oldPassword, newPassword) {
-        if (Validator.equals(oldPassword, newPassword)) {
+        if (NpmValidator.equals(oldPassword, newPassword)) {
             return getMessage("password_is_same");
         }
     }
 
     function isDate(value) {
-        if (!Validator.isISO8601(value)) {
+        if (!NpmValidator.isISO8601(value)) {
             return getMessage("invalid_date");
         }
     }
