@@ -1,5 +1,6 @@
-# validator-js
-Provides an easy way to validate forms and gives custom error messages
+# Easy ValidatorJs
+Provides an easy way to validate forms and gives custom error messages.
+Ideal with frameworks like reactJs and vueJs
 
 ### Installation by npm
 	$ npm install validator-js --save 
@@ -175,6 +176,6 @@ const validator = new Validator(getMessage);
 Run test by simply typing `npm test` from the root directory of this package.
 
 ### Contribute on github
-Clone this repository( https://github.com/avinash403/validator-js.git ), make your changes and raise a pull request to development branch
+Clone this repository( https://github.com/avinash403/easy-validator-js.git ), make your changes and raise a pull request to development branch
 
 
