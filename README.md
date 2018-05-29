@@ -7,7 +7,7 @@ Ideal with frameworks like reactJs and vueJs
 
 ### Usage Example
 ``` 
-import {Validator} from 'validator-js';
+import {Validator} from 'easy-validator-js';
 
 
 function validateTestData(data)
@@ -77,7 +77,7 @@ function validateTestData(data)
 
 By default there are fixed validation messages which you can find in the next section, but it can be customized to get custom validation messages by passing a method while creating the object. Like so:
 ```
-import {Validator} from 'validator-js'
+import {Validator} from 'easy-validator-js'
 
 function getMessage(key){
 	//return message based on key
@@ -143,7 +143,7 @@ Now, import messages and use it in `getMessage()` function
 
 ```
 import {customMessages} from 'messages'
-import {Validator} from 'validator-js'
+import {Validator} from 'easy-validator-js'
 
 function getMessage(key){
 	return customMessages[key];
@@ -160,7 +160,7 @@ Finally, you are all set up for seeing your own custom messages
 ### Messages coming from language file (in case of laravel with vue)
 You can create the above message keys in your language file and make a function which simply gives the values corresponding to the given key and pass the same function as class arguments like so:
 ```
-import {Validator} from 'validator-js'
+import {Validator} from 'easy-validator-js'
 
 function getMessage(key){
 	//get the value of the passed key from language file

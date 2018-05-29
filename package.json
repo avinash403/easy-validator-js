@@ -14,9 +14,9 @@
   "author": "avinash kumar <ak403602@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/avinash403/validator-js/issues"
+    "url": "https://github.com/avinash403/easy-validator-js/issues"
   },
-  "homepage": "https://github.com/avinash403/validator-js#readme",
+  "homepage": "https://github.com/avinash403/easy-validator-js#readme",
   "dependencies": {
     "validator": "^10.2.0"
   },
