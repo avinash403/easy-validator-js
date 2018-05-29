@@ -6,21 +6,21 @@ Provides an easy way to validate forms and gives custom error messages
 
 ### Usage Example
 ``` 
-	import {validator} from 'validator-js';
+import {validator} from 'validator-js';
 
 
-	function validateTestData(data)
-	{
-		const {email, username, first_name} = data;
+function validateTestData(data)
+{
+	const {email, username, first_name} = data;
 
-		const {errors, isValid} = validate({
-				email : [email,'isRequired','isEmail'],
-				username : [username,'isRequired'],
-				first_name : [first_name,'isRequired','max(20)','min(5)']
-			})
+	const {errors, isValid} = validate({
+			email : [email,'isRequired','isEmail'],
+			username : [username,'isRequired'],
+			first_name : [first_name,'isRequired','max(20)','min(5)']
+		})
 
-		return {errors, isValid}
-	}	
+	return {errors, isValid}
+}	
 
 ```
 

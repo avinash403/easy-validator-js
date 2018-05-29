@@ -1,6 +1,6 @@
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
-import {exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength} from '../Helpers/messages';
+import {exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength} from 'messages';
 
 
 /** Validate takes array of field, value and property and validate values against the properties
@@ -149,9 +149,10 @@ function isDate(value) {
     }
 }
 
-/**@param isMobileValid => It is sent by the state. So if it is false it returns the error message
- * @param value => Not required but it is better to just write it in the function rather than recreating a logic
- * @return string => message
+/**
+ * @param Boolean isMobileValid     It is sent by the state. So if it is false it returns the error message
+ * @param Any     value             Not required but it is better to just write it in the function rather than recreating a logic
+ * @return string                   Validation message
  * */
 function isMobile(isMobileValid, value) {
     if (isMobileValid !== 'true') {
