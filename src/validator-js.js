@@ -69,7 +69,7 @@ export function Validator(getMessage) {
 
     function isRequired(value) {
         if (NpmValidator.isEmpty(value)) {
-            return getMessage("required");
+            return getMessage("this_field_is_required");
         }
     }
 
