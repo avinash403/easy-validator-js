@@ -48,22 +48,39 @@ export function Validator(getMessage) {
     }
 
 
+    /**
+     * adds escape characters in a string where characters like ' or \n is used
+     * @param {[type]} value [description]
+     */
+    function addSlashes(value){
+        //replacing apostrophe with escape charcter and epostrophe(\'')
+        var formattedValue = value.replace('\'','\\\'');
+
+        return formattedValue;
+        // return value.replace(/\'/g, "\\\'").replace(/\"/g, "\\\"");
+
+    }
+
     /** eval is converting string into function call
      * @param String|Number value     value, which has to be validated
      * @param String property         property against which value will be validated
      * @return String                 error msg from helper functions
      * */
     function getValidationForProperty(value, property) {
+        
+        //replacing apostrophe with escape charcter and epostrophe(\'')
+        const formattedValue = addSlashes(value);
+        
         if (property.indexOf('(') > -1) {
 
             /*
              * for eg. property = someFunction(arg1)
              * it will be converted into someFunction(arg1,value)
              **/
-            const functionWithArgument = property.replace(')', ',' + '\'' + value + '\'' + ')');
+            const functionWithArgument = property.replace(')', ',' + '\'' + formattedValue + '\'' + ')');
             return eval(functionWithArgument);
         }
-        return eval(`${property}('${value}')`);
+        return eval(`${property}('${formattedValue}')`);
     }
 
 

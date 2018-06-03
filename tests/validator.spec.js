@@ -29,6 +29,29 @@ describe('validate',()=>{
         expect(errors.isValid).toBe(true)
 
     })
+    
+    it('returns isValid as true if isRequired is passed and value contains an apostrophe', () => {
+
+        const testField = "test'123"
+        
+        const errors = validator.validate({
+            testField: [testField, 'isRequired'],
+        });
+
+        expect(errors.isValid).toBe(true)        
+    })
+
+    // it.only('returns isValid as true if isRequired is passed and value contains an escape character', () => {
+
+    //     const testField = "test'123\\"
+    //     // console.log(testField);
+    //     const errors = validator.validate({
+    //         testField: [testField, 'isRequired'],
+    //     });
+
+    //     expect(errors.isValid).toBe(true)        
+    // })
+
 
     it('returns isValid as false if max(5) is passed and value has 6 or more characters', () => {
 
