@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "Easy validation of forms in using javascript",
   "main": "src/validator-js.js",
+  "keywords":["validator","js validator","vuex validator","redux validator"],
   "scripts": {
     "test": "jest",
     "watch-test": "npm run test -- --watch --notify"
