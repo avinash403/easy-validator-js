@@ -1,6 +1,6 @@
 {
   "name": "easy-validator-js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Easy validation of forms in using javascript",
   "main": "src/validator-js.js",
   "keywords": [
