@@ -1,6 +1,19 @@
 # Easy ValidatorJs
 Provides an easy way to validate forms and gives custom error messages.
-Ideal with frameworks like reactJs and vueJs
+Ideal with frameworks like *ReactJs* with *Redux* and *VueJs* with *Vuex*
+
+### Motivation
+Defining logic for validation in components gets messy sometimes as your compoenent is already doing a lot of things. The idea is to have a central place where all the validation related logic lives and component has to only call that logic and listen to it.
+```src
+    components
+        ExampleForm.js
+    Rules
+        ExampleRules.js
+    Store (Reducer in of Redux)
+        Validation.js
+```
+
+
 
 ### Installation by npm
 	$ npm install easy-validator-js --save 
@@ -12,29 +25,29 @@ import {Validator} from 'easy-validator-js';
 
 function validateTestData(data)
 {
-	const {email, username, first_name} = data;
+    const {email, username, first_name} = data;
 
-	//creating a validator object
-	const validator = new Validator();
+    //creating a validator object
+    const validator = new Validator();
 
-	/*
-	 * validate accepts an object, something like 
-	 * validate({
-	 *		keyName1 : [ keyValue1, 'condition1','condition2' ],
-	 *		keyName2 : [ keyValue2, 'condition3','condition4' ]
-	 *	})
-	 */
-	const {errors, isValid} = validate.validate({
-			email : [email,'isRequired','isEmail'],
-			username : [username,'isRequired'],
-			first_name : [first_name,'isRequired','max(20)','min(5)']
-		});
+    /*
+     * validate accepts an object, something like 
+     * validate({
+     *		keyName1 : [ keyValue1, 'condition1','condition2' ],
+     *		keyName2 : [ keyValue2, 'condition3','condition4' ]
+     *	})
+     */
+    const {errors, isValid} = validator.validate({
+	email : [email,'isRequired','isEmail'],
+	username : [username,'isRequired'],
+	first_name : [first_name,'isRequired','max(20)','min(5)']
+    });
 
-	/*
-	 * errors will be an array of object, something like
-	 * [email: "this field is required", username : "this field is required", first_name:"this field is required"]
-	 */
-	return {errors, isValid};
+    /*
+     * errors will be an array of object, something like
+     * [email: "this field is required", username : "this field is required", first_name:"this field is required"]    
+     */
+    return {errors, isValid};
 }	
 
 ```
@@ -146,7 +159,7 @@ import {customMessages} from 'messages'
 import {Validator} from 'easy-validator-js'
 
 function getMessage(key){
-	return customMessages[key];
+    return customMessages[key];
 }
 
 //passing method to the class
@@ -163,13 +176,59 @@ You can create the above message keys in your language file and make a function 
 import {Validator} from 'easy-validator-js'
 
 function getMessage(key){
-	//get the value of the passed key from language file
+    //get the value of the passed key from language file
 }
 
 //passing method to the class
 const validator = new Validator(getMessage);
 
 ```
+
+### Use Case
+Let's say you want to validate your form at the time of form submission and you are using a state manager like Redux or Vuex. 
+Now, create a file let's say ExampleRules.js, in which all your rules related to a particular form will live.
+```
+//exampleRules.js
+
+import {Validator} from 'easy-validator-js';
+import {store} from 'store/store'; //your redux or vuex store
+
+function validateExampleData(data)
+{
+    const {email, username, first_name} = data;
+
+    const validator = new Validator();
+    const {errors, isValid} = validator.validate({
+	email : [email,'isRequired','isEmail'],
+	username : [username,'isRequired'],
+	first_name : [first_name,'isRequired','max(20)','min(5)']
+    });
+	
+    store.dispatch('VALIDATION_ERRORS', errors); //populating the store with errors
+    return isValid;
+}	
+```
+Now, while submitting your form you can do something like this this:
+```
+import {validateExampleData} from 'exampleRules.js' 
+
+export default{
+    onSubmit(){
+        if(isValid()){
+	    //submit your form
+        }
+    }
+    
+    isValid(){
+	if(validateExampleData(this.$data)) { //for ReactJs it will be this.state	
+	    return true;	    
+	}
+	return false;
+    }
+
+}
+```
+At the same time, your component can listen to Redux/Vuex store for errors.
 
 
 ### Test
