@@ -70,7 +70,7 @@ function validateTestData(data)
 
 ### Default Messages
 ```
-* required 			: this field is required
+* this_field_is_required 	: this field is required
 * max_length_exceeded   	: maximum length exceeded
 * not_enough_length 		: too short
 * invalid_email 		: invalid email
