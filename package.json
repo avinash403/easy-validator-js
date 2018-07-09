@@ -2,7 +2,7 @@
   "name": "easy-validator-js",
   "version": "1.0.10",
   "description": "Easy validation of forms in using javascript",
-  "main": "src/validator-js.js",
+  "main": "dist/validator-js.js",
   "keywords": [
     "validator",
     "js validator",
@@ -11,7 +11,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "watch-test": "npm run test -- --watch --notify"
+    "watch-test": "npm run test -- --watch --notify",
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "prepublish":"npm run build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "validator": "^10.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "jest": "^23.0.1"
   },
