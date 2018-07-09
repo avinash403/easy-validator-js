@@ -1,5 +1,7 @@
 import {Validator} from 'validator-js'
 
+var _= require('lodash');
+
 
 const validator = new Validator;
 
@@ -13,8 +15,6 @@ describe('validate',()=>{
         const errors = validator.validate({
             testField: [testField, 'isRequired'],
         });
-
-        console.log(errors);
 
         expect(errors.isValid).toBe(false)
 
@@ -46,8 +46,6 @@ describe('validate',()=>{
     it('return isValid as true if last character is escape character', () => {
 
         const testField = "test'123\\"
-        console.log(testField);
-        console.log(JSON.stringify(testField));
 
         const errors = validator.validate({
             testField: [testField, 'isRequired'],

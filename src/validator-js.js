@@ -59,7 +59,7 @@ export function Validator(getMessage) {
 
         //NOTE: as encodeURIComponent doesn't encode apostrophe, we manually do it 
         //replacing apostrophe with %27(as standard)
-        formattedValue = formattedValue.replace('\'','%27');
+        formattedValue = formattedValue.replace(new RegExp('\'','g'),'%27');
 
         return formattedValue;
     }
@@ -72,7 +72,7 @@ export function Validator(getMessage) {
     function decodeStringWithSpecialChars(value){
 
         //replacing %27 with apostrophe
-        let formattedValue = value.replace('%27','\'');
+        let formattedValue = value.replace(new RegExp('%27','g'),'\'');
 
         //decoding uri encoded string
         formattedValue = decodeURIComponent(formattedValue);
