@@ -47,18 +47,37 @@ export function Validator(getMessage) {
         };
     }
 
-
     /**
-     * adds escape characters in a string where characters like ' or \n is used
-     * @param {[type]} value [description]
+     * encodes string containing special characters
+     * @param {string} value  string   that needs to be encoded
+     * @return {string} encoded string
      */
-    function addSlashes(value){
-        //replacing apostrophe with escape charcter and epostrophe(\'')
-        var formattedValue = value.replace('\'','\\\'');
+    function encodeStringWithSpecialChars(value){
+        
+        //encoding the string to handle special characters
+        let formattedValue = encodeURIComponent(value);
+
+        //NOTE: as encodeURIComponent doesn't encode apostrophe, we manually do it 
+        //replacing apostrophe with %27(as standard)
+        formattedValue = formattedValue.replace('\'','%27');
 
         return formattedValue;
-        // return value.replace(/\'/g, "\\\'").replace(/\"/g, "\\\"");
+    }
 
+    /**
+     * Decodes string containing special characters
+     * @param  {string} value   encoded string
+     * @return {string}         decoded string
+     */
+    function decodeStringWithSpecialChars(value){
+
+        //replacing %27 with apostrophe
+        let formattedValue = value.replace('%27','\'');
+
+        //decoding uri encoded string
+        formattedValue = decodeURIComponent(formattedValue);
+
+        return formattedValue;
     }
 
     /** eval is converting string into function call
@@ -69,8 +88,8 @@ export function Validator(getMessage) {
     function getValidationForProperty(value, property) {
         
         //replacing apostrophe with escape charcter and epostrophe(\'')
-        const formattedValue = addSlashes(value);
-        
+        const formattedValue = encodeStringWithSpecialChars(value);
+
         if (property.indexOf('(') > -1) {
 
             /*
@@ -85,6 +104,8 @@ export function Validator(getMessage) {
 
 
     function isRequired(value) {
+        value = decodeStringWithSpecialChars(value);
+        
         if (NpmValidator.isEmpty(value)) {
             return getMessage("this_field_is_required");
         }
@@ -92,18 +113,21 @@ export function Validator(getMessage) {
 
 
     function max(maxLength, value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isLength(value, 0, maxLength)) {
             return getMessage("max_length_exceeded", maxLength);
         }
     }
 
     function min(minLength, value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isLength(value, minLength, 100)) {
             return getMessage("not_enough_length", minLength);
         }
     }
 
     function isEmail(value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmail(value)) {
             return getMessage("invalid_email");
         }
@@ -115,6 +139,7 @@ export function Validator(getMessage) {
      * @param {string} value            value input by user
      * */
     function isAlpha(strict = false, value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
 
             //making a copy of value to avoid mutating the original copy
@@ -138,6 +163,7 @@ export function Validator(getMessage) {
      * @param {string} value            value input by user
      * */
     function isAlphanumeric(strict = false, value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
 
             //making a copy of value to avoid mutating the original copy
@@ -155,6 +181,7 @@ export function Validator(getMessage) {
     }
 
     function isNumber(value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
             if (!NpmValidator.isInt(value)) {
                 return getMessage("invalid_number");
@@ -167,6 +194,7 @@ export function Validator(getMessage) {
      * @param value => input value
      */
     function maxValue(maxVal, value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
             if (!(value <= maxVal)) {
                 return getMessage("more_than_max_value");
@@ -179,6 +207,7 @@ export function Validator(getMessage) {
      * @param value => input value
      */
     function minValue(minVal, value) {
+        value = decodeStringWithSpecialChars(value);
         const stringValue = `${value}`;
         if (!NpmValidator.isEmpty(stringValue)) {
             if (!(value >= minVal)) {
@@ -201,6 +230,7 @@ export function Validator(getMessage) {
     }
 
     function isDate(value) {
+        value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isISO8601(value)) {
             return getMessage("invalid_date");
         }
@@ -212,6 +242,7 @@ export function Validator(getMessage) {
      * @return string                   Validation message
      * */
     function isMobile(isMobileValid, value) {
+        value = decodeStringWithSpecialChars(value);
         if (isMobileValid !== 'true') {
             return getMessage("invalid_mobile");
         }
