@@ -103,7 +103,7 @@ const validator = new Validator(getMessage);
 
 `getMessage ` will recieve following keys : 
 ```
-* required
+* this_field_is_required
 * max_length_exceeded
 * not_enough_length
 * invalid_email
@@ -123,7 +123,7 @@ Something like this :
 ```
 export const customMessages = {
 
-    required: "custom message",
+    this_field_is_required: "custom message",
 
     max_length_exceeded: "custom message",
 
