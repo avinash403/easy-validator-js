@@ -207,4 +207,26 @@ describe('validate',()=>{
         expect(errors.isValid).toBe(false)
     })
 
+    it('returns isValid as false if `isValidWithRegex` is passed with invalid string', () => {
+
+        const testField = "A drop of ink may make a million think"
+
+        const errors = validator.validate({
+            testField: [testField, 'isValidWithRegex(/z/)'],
+        });
+
+        expect(errors.isValid).toBe(false)
+    })
+
+    it('returns isValid as false if `isValidWithRegex` is passed with valid string', () => {
+
+        const testField = "A drop of ink may make a million think"
+
+        const errors = validator.validate({
+            testField: [testField, 'isValidWithRegex(/k/i)'],
+        });
+
+        expect(errors.isValid).toBe(true)
+    })
+
 })

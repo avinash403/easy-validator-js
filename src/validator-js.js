@@ -247,4 +247,15 @@ export function Validator(getMessage) {
             return getMessage("invalid_mobile");
         }
     }
+
+    /**
+     * Compare the string with regex pattern and tells if string is valid
+     * @return {string} [description]
+     */
+    function isValidWithRegex(regex,value)
+    {
+        if(value.search(regex) === -1){
+            return getMessage('invalid_string');
+        }
+    }
 }

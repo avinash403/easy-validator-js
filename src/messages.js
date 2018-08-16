@@ -25,4 +25,6 @@ export const message = {
     invalid_date: "not a valid date",
 
     invalid_mobile: "invalid mobile number",
+
+    invalid_string: "passed string does not match the valid pattern",
 };
