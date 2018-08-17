@@ -38,9 +38,9 @@ function validateTestData(data)
      *	})
      */
     const {errors, isValid} = validator.validate({
-	email : [email,'isRequired','isEmail'],
-	username : [username,'isRequired'],
-	first_name : [first_name,'isRequired','max(20)','min(5)']
+	    email : [email,'isRequired','isEmail'],
+	    username : [username,'isRequired'],
+	    first_name : [first_name,'isRequired','max(20)','min(5)']
     });
 
     /*
@@ -51,7 +51,6 @@ function validateTestData(data)
 }	
 
 ```
-
 
 ### Available Validations
 * isRequired
@@ -233,6 +232,40 @@ export default{
 }
 ```
 At the same time, your component can listen to Redux/Vuex store for errors.
+
+#### Passing custom message with each rule
+``` 
+import {Validator} from 'easy-validator-js';
+
+
+function validateTestData(data)
+{
+    const {email, username, first_name} = data;
+
+    //creating a validator object
+    const validator = new Validator();
+
+    /*
+     * validate accepts an object, something like 
+     * validate({
+     *      keyName1 : [ keyValue1, 'condition1','condition2' ],
+     *      keyName2 : [ keyValue2, 'condition3','condition4' ]
+     *  })
+     */
+    const {errors, isValid} = validator.validate({
+        email : [email,{'isRequired': 'this field is required'}, {'isEmail':'invalid email'}],
+        username : [username, {'isRequired': 'this field is required'}],
+        first_name : [first_name,{'max(20)':'max length exceeded'}, {'min(5)':'min length not satisfied'}]
+    });
+
+    /*
+     * errors will be an array of object, something like
+     * [email: "this field is required", username : "this field is required", first_name:"this field is required"]    
+     */
+    return {errors, isValid};
+}   
+
+```
 
 
 ### Test

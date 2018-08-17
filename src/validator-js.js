@@ -1,6 +1,6 @@
 import NpmValidator from 'validator';
 import isEmpty from 'lodash/isEmpty';
-import { exceededMaxLength, lessThanMinValue, message, moreThanMaxValue, notEnoughLength } from './messages';
+import { message } from './messages';
 
 /**
  * @param Function  handles messages 
@@ -27,17 +27,41 @@ export function Validator(getMessage) {
         const errors = {};
 
         Object.keys(array).forEach(function(field) {
+        
+            //adding '' after array[field][0] will make it a string. npm Validator only validates string
             const value = array[field][0] + '';
 
-            //adding '' after array[field][0] will make it a string. npm Validator only validates string
+            //skipping first element of the array. i.e value
             array[field].shift();
+
             array[field].every(property => {
-                const error = getValidationForProperty(value, property);
-                if (error !== undefined) {
-                    errors[field] = error;
-                    return false
+                
+                // check if property is an object
+                // if yes, take its key as validation name and value as message
+                if(typeof property === 'object'){
+
+                    //getting key and value of the object
+                    const validationProperty = Object.keys(property)[0];
+                    const validationMessage = Object.values(property)[0];
+
+                    const error = getValidationForProperty(value, validationProperty);
+
+                    if (error !== undefined) {
+                        errors[field] = validationMessage;
+                        return false;
+                    }
                 }
+                else {
+
+                    const error = getValidationForProperty(value, property);
+                    
+                    if (error !== undefined) {
+                        errors[field] = error;
+                        return false
+                    }
+                }             
                 return true
+
             });
         });
 
@@ -97,6 +121,7 @@ export function Validator(getMessage) {
              * it will be converted into someFunction(arg1,value)
              **/
             const functionWithArgument = property.replace(')', ',' + '\'' + formattedValue + '\'' + ')');
+
             return eval(functionWithArgument);
         }
         return eval(`${property}('${formattedValue}')`);
@@ -254,6 +279,8 @@ export function Validator(getMessage) {
      */
     function isValidWithRegex(regex,value)
     {
+        value = decodeStringWithSpecialChars(value);
+
         if(value.search(regex) === -1){
             return getMessage('invalid_string');
         }

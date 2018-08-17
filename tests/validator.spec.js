@@ -229,4 +229,48 @@ describe('validate',()=>{
         expect(errors.isValid).toBe(true)
     })
 
+
+    it('returns correct validation message if a message is passed as second argument', () => {
+
+        const testField = "A drop of ink may make a million think"
+
+        const errors = validator.validate({
+            testField: [testField, 'isValidWithRegex(/k/i)'],
+        });
+
+        expect(errors.isValid).toBe(true)
+    })
+
+    it('returns custom validation message, if validation rule is passed as object for isRequired', () => {
+
+        const testField = ""
+
+        //allow message to get concatenate based in 
+        //or make an object ?
+        const errors = validator.validate({
+            testField: [testField,{'isRequired':'This field is a must bitch!'}],
+        });
+        
+        expect(errors.isValid).toBe(false)
+        
+        expect(errors.errors.testField).toBe('This field is a must bitch!')
+
+    })
+
+    it('returns custom validation message, if validation rule is passed as object for isValidWithRegex', () => {
+
+        const testField = ""
+
+        //allow message to get concatenate based in 
+        //or make an object ?
+        const errors = validator.validate({
+            testField: [testField,{'isValidWithRegex(/a/i)':'not valid with regex bitch!'}],
+        });
+        
+        expect(errors.isValid).toBe(false)
+        
+        expect(errors.errors.testField).toBe('not valid with regex bitch!')
+
+    })
+
 })
