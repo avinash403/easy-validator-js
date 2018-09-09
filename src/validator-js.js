@@ -3,7 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import { message } from './messages';
 
 /**
- * @param Function  handles messages 
+ * @param Function  handles messages
  */
 export function Validator(getMessage) {
 
@@ -14,20 +14,20 @@ export function Validator(getMessage) {
     }
 
     /** Validate takes array of field, value and property and validate values against the properties
-     * 
+     *
      *  @param array array           object array with fieldName, value and validation rules
      *                               array = {
      *                                    field1 :[value1, property1, property2],
      *                                    field2:[value2,property1,property2,property3]
      *                                    }
-     *  @return {object, boolean}    {(key,error),true/false}. 
+     *  @return {object, boolean}    {(key,error),true/false}.
      *                               IF there error field is empty, isValid will be true ELSE false
      */
     this.validate = function(array) {
         const errors = {};
 
         Object.keys(array).forEach(function(field) {
-        
+
             //adding '' after array[field][0] will make it a string. npm Validator only validates string
             const value = array[field][0] + '';
 
@@ -35,7 +35,7 @@ export function Validator(getMessage) {
             array[field].shift();
 
             array[field].every(property => {
-                
+
                 // check if property is an object
                 // if yes, take its key as validation name and value as message
                 if(typeof property === 'object'){
@@ -54,12 +54,12 @@ export function Validator(getMessage) {
                 else {
 
                     const error = getValidationForProperty(value, property);
-                    
+
                     if (error !== undefined) {
                         errors[field] = error;
                         return false
                     }
-                }             
+                }
                 return true
 
             });
@@ -77,11 +77,11 @@ export function Validator(getMessage) {
      * @return {string} encoded string
      */
     function encodeStringWithSpecialChars(value){
-        
+
         //encoding the string to handle special characters
         let formattedValue = encodeURIComponent(value);
 
-        //NOTE: as encodeURIComponent doesn't encode apostrophe, we manually do it 
+        //NOTE: as encodeURIComponent doesn't encode apostrophe, we manually do it
         //replacing apostrophe with %27(as standard)
         formattedValue = formattedValue.replace(new RegExp('\'','g'),'%27');
 
@@ -110,7 +110,7 @@ export function Validator(getMessage) {
      * @return String                 error msg from helper functions
      * */
     function getValidationForProperty(value, property) {
-        
+
         //replacing apostrophe with escape charcter and epostrophe(\'')
         const formattedValue = encodeStringWithSpecialChars(value);
 
@@ -130,7 +130,7 @@ export function Validator(getMessage) {
 
     function isRequired(value) {
         value = decodeStringWithSpecialChars(value);
-        
+
         if (NpmValidator.isEmpty(value)) {
             return getMessage("this_field_is_required");
         }
@@ -283,6 +283,22 @@ export function Validator(getMessage) {
 
         if(value.search(regex) === -1){
             return getMessage('invalid_string');
+        }
+    }
+
+    /**
+     * If the passed value is a valid url
+     * @param  {String}  value [description]
+     * @return {String|undefined}      if invalid, a message else nothing
+     */
+    function isUrl(value){
+        value = decodeStringWithSpecialChars(value);
+
+        var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+        var url = new RegExp(regexQuery,"i");
+
+        if(!url.test(value)){
+            return getMessage('invalid_url');
         }
     }
 }

@@ -16,10 +16,10 @@ Defining logic for validation in components gets messy sometimes as your compoen
 
 
 ### Installation by npm
-	$ npm install easy-validator-js --save 
+	$ npm install easy-validator-js --save
 
 ### Usage Example
-``` 
+```
 import {Validator} from 'easy-validator-js';
 
 
@@ -31,7 +31,7 @@ function validateTestData(data)
     const validator = new Validator();
 
     /*
-     * validate accepts an object, something like 
+     * validate accepts an object, something like
      * validate({
      *		keyName1 : [ keyValue1, 'condition1','condition2' ],
      *		keyName2 : [ keyValue2, 'condition3','condition4' ]
@@ -48,7 +48,7 @@ function validateTestData(data)
      * [email: "this field is required", username : "this field is required", first_name:"this field is required"]    
      */
     return {errors, isValid};
-}	
+}
 
 ```
 
@@ -66,6 +66,8 @@ function validateTestData(data)
 * shouldNotMatch
 * isDate
 * isMobile
+* isValidWithRegex
+* isUrl
 
 ### Default Messages
 ```
@@ -83,6 +85,7 @@ function validateTestData(data)
 * invalid_date 			: not a valid date
 * invalid_mobile 		: invalid mobile number
 * invalid_string         : passed string does not match the valid pattern
+* invalid_url       : not a valid url
 ```
 
 
@@ -101,7 +104,7 @@ const validator = new Validator(getMessage);
 
 ```
 
-`getMessage ` will recieve following keys : 
+`getMessage ` will recieve following keys :
 ```
 * this_field_is_required
 * max_length_exceeded
@@ -117,10 +120,11 @@ const validator = new Validator(getMessage);
 * invalid_date
 * invalid_mobile
 * invalid_string
+* invalid_url
 ```
 
 Now, you can give whatever value you want to give to when any of the above key is passed. The easiet way of doing it is by creating and importing a javascript array which has keys as above and value as your custom message.
-Something like this : 
+Something like this :
 ```
 export const customMessages = {
 
@@ -151,6 +155,8 @@ export const customMessages = {
     invalid_mobile: "custom message",
 
     invalid_string: "custom message",
+
+    invalid_url: "custom message",
 };
 ```
 
@@ -188,7 +194,7 @@ const validator = new Validator(getMessage);
 ```
 
 ### Use Case
-Let's say you want to validate your form at the time of form submission and you are using a state manager like Redux or Vuex. 
+Let's say you want to validate your form at the time of form submission and you are using a state manager like Redux or Vuex.
 Now, create a file let's say ExampleRules.js, in which all your rules related to a particular form will live.
 ```
 //exampleRules.js
@@ -206,14 +212,14 @@ function validateExampleData(data)
 	username : [username,'isRequired'],
 	first_name : [first_name,'isRequired','max(20)','min(5)']
     });
-	
+
     store.dispatch('VALIDATION_ERRORS', errors); //populating the store with errors
     return isValid;
-}	
+}
 ```
 Now, while submitting your form you can do something like this this:
 ```
-import {validateExampleData} from 'exampleRules.js' 
+import {validateExampleData} from 'exampleRules.js'
 
 export default{
     onSubmit(){
@@ -221,9 +227,9 @@ export default{
 	    //submit your form
         }
     }
-    
+
     isValid(){
-	if(validateExampleData(this.$data)) { //for ReactJs it will be this.state	
+	if(validateExampleData(this.$data)) { //for ReactJs it will be this.state
 	    return true;	    
 	}
 	return false;
@@ -234,7 +240,7 @@ export default{
 At the same time, your component can listen to Redux/Vuex store for errors.
 
 #### Passing custom message with each rule
-``` 
+```
 import {Validator} from 'easy-validator-js';
 
 
@@ -246,7 +252,7 @@ function validateTestData(data)
     const validator = new Validator();
 
     /*
-     * validate accepts an object, something like 
+     * validate accepts an object, something like
      * validate({
      *      keyName1 : [ keyValue1, 'condition1','condition2' ],
      *      keyName2 : [ keyValue2, 'condition3','condition4' ]
@@ -273,5 +279,3 @@ Run test by simply typing `npm test` from the root directory of this package.
 
 ### Contribute on github
 Clone this repository( https://github.com/avinash403/easy-validator-js.git ), make your changes and raise a pull request to development branch
-
-

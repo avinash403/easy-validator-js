@@ -7,11 +7,11 @@ const validator = new Validator;
 
 describe('validate',()=>{
 
-	
+
     it('returns isValid as false if isRequired is passed but value is empty', () => {
 
         const testField = ""
-        
+
         const errors = validator.validate({
             testField: [testField, 'isRequired'],
         });
@@ -21,26 +21,26 @@ describe('validate',()=>{
     })
 
     it('returns isValid as true if isRequired is passed and value is non-empty', () => {
-        
+
         const testField = "test value"
-        
+
         const errors = validator.validate({
             testField: [testField, 'isRequired'],
         });
-        
+
         expect(errors.isValid).toBe(true)
 
     })
-    
+
     it('returns isValid as true if isRequired is passed and value contains an apostrophe', () => {
 
         const testField = "test'123"
-        
+
         const errors = validator.validate({
             testField: [testField, 'isRequired'],
         });
 
-        expect(errors.isValid).toBe(true)        
+        expect(errors.isValid).toBe(true)
     })
 
     it('return isValid as true if last character is escape character', () => {
@@ -51,7 +51,7 @@ describe('validate',()=>{
             testField: [testField, 'isRequired'],
         });
 
-        expect(errors.isValid).toBe(true)        
+        expect(errors.isValid).toBe(true)
     })
 
 
@@ -72,7 +72,7 @@ describe('validate',()=>{
         const errors = validator.validate({
             testField: [testField, 'max(5)'],
         });
-        
+
         expect(errors.isValid).toBe(true)
     })
 
@@ -88,42 +88,42 @@ describe('validate',()=>{
     })
 
     it('returns isValid as true if min(5) is passed and value has 5 or more characters', () => {
-    
+
         const testField = "123456789"
-    
+
         const errors = validator.validate({
             testField: [testField, 'min(5)'],
         });
-    
+
         expect(errors.isValid).toBe(true)
     })
-    
+
     it('returns isValid as false if isEmail is passed and value is invalid email', () => {
-    
+
         const testField = "invalid email"
-    
+
         const errors = validator.validate({
             testField: [testField, 'isEmail'],
         });
-    
+
         expect(errors.isValid).toBe(false)
     })
 
     it('returns isValid as true if isEmail is passed and value is valid email', () => {
-        
+
         const testField = "test@email.com"
-        
+
         const errors = validator.validate({
             testField: [testField, 'isEmail'],
         });
-        
+
         expect(errors.isValid).toBe(true)
     })
 
     it('returns isValid as false if isAlpha is passed without parameter(strict) and value has non alphabetic characters', () => {
-        
+
         const testField = "test123"
-        
+
         const errors = validator.validate({
             testField: [testField, 'isAlpha(false)'],
         });
@@ -175,13 +175,13 @@ describe('validate',()=>{
     })
 
     it('returns isValid as false if isAlphanumeric is passed without parameter(strict) and value has no non-alphanumeric characters', () => {
-        
+
         const testField = "test"
-        
+
         const errors = validator.validate({
             testField: [testField, 'isAlphanumeric(false)'],
         });
-        
+
         expect(errors.isValid).toBe(true)
     })
 
@@ -245,14 +245,14 @@ describe('validate',()=>{
 
         const testField = ""
 
-        //allow message to get concatenate based in 
+        //allow message to get concatenate based in
         //or make an object ?
         const errors = validator.validate({
             testField: [testField,{'isRequired':'This field is a must bitch!'}],
         });
-        
+
         expect(errors.isValid).toBe(false)
-        
+
         expect(errors.errors.testField).toBe('This field is a must bitch!')
 
     })
@@ -261,16 +261,40 @@ describe('validate',()=>{
 
         const testField = ""
 
-        //allow message to get concatenate based in 
+        //allow message to get concatenate based in
         //or make an object ?
         const errors = validator.validate({
             testField: [testField,{'isValidWithRegex(/a/i)':'not valid with regex bitch!'}],
         });
-        
+
         expect(errors.isValid).toBe(false)
-        
+
         expect(errors.errors.testField).toBe('not valid with regex bitch!')
 
     })
 
+    it('returns validation message, if validation rule is passed as object for isUrl', () => {
+
+        const testField = "https:/stackoverflow.com"
+
+        const errors = validator.validate({
+            testField: [testField,'isUrl'],
+        });
+
+        expect(errors.isValid).toBe(false)
+
+        expect(errors.errors.testField).toBe('not a valid url')
+
+    })
+
+		it('passes url validation fot valid url', () => {
+
+				const testField = "https://stackoverflow.com"
+
+				const errors = validator.validate({
+						testField: [testField,'isUrl'],
+				});
+
+				expect(errors.isValid).toBe(true)
+		})
 })

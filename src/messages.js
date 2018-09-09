@@ -27,4 +27,6 @@ export const message = {
     invalid_mobile: "invalid mobile number",
 
     invalid_string: "passed string does not match the valid pattern",
+
+    invalid_url: "not a valid url",
 };
