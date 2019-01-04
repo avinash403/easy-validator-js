@@ -313,8 +313,10 @@ export function Validator(getMessage) {
     */
     function isValidUserName(value) {
       var regex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){1,49}$/i;
-       if(!value.match(regex)) {
-        return getMessage("invalid_username");
-       }
+      if (!NpmValidator.isEmpty(value)) {
+        if(!value.match(regex)) {
+          return getMessage("invalid_username");
+        }
+      }
     }
 }
