@@ -87,7 +87,7 @@ function validateTestData(data)
 * invalid_mobile 		: invalid mobile number
 * invalid_string         : passed string does not match the valid pattern
 * invalid_url       : not a valid url
-* invalid_username: "invalid username",
+* invalid_username: invalid username,
 ```
 
 
