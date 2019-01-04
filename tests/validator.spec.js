@@ -297,28 +297,4 @@ describe('validate',()=>{
 
 				expect(errors.isValid).toBe(true)
 		})
-
-    it('returns isValid as false if `UserName` is passed and value has spaces', () => {
-      const testField = "test test "
-      const errors = validator.validate({
-        testField: [testField, 'isValidUserName'],
-      });
-      expect(errors.isValid).toBe(false)
-    })
-
-    it('returns isValid as false if `UserName` is passed and value has spacial char', () => {
-      const testField = "testtest@"
-      const errors = validator.validate({
-          testField: [testField, 'isValidUserName'],
-      });
-      expect(errors.isValid).toBe(false)
-    })
-
-    it('returns isValid as true if `UserName` is passed and value is valid ', () => {
-      const testField = "testtest"
-      const errors = validator.validate({
-          testField: [testField, 'isValidUserName'],
-      });
-      expect(errors.isValid).toBe(true)
-    })
 })
