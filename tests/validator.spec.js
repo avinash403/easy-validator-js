@@ -163,45 +163,45 @@ describe('validate',()=>{
         expect(errors.isValid).toBe(false)
     })
 
-    it('returns isValid as false if isAlphanumeric(false) is passed without parameter(strict) and value has non non-Alphanumeric characters', () => {
+    it('returns isValid as false if isAlphaNumeric(false) is passed without parameter(strict) and value has non non-Alphanumeric characters', () => {
 
         const testField = "test123&33"
 
         const errors = validator.validate({
-            testField: [testField, 'isAlphanumeric(false)'],
+            testField: [testField, 'isAlphaNumeric(false)'],
         });
 
         expect(errors.isValid).toBe(false)
     })
 
-    it('returns isValid as false if isAlphanumeric is passed without parameter(strict) and value has no non-alphanumeric characters', () => {
+    it('returns isValid as false if isAlphaNumeric is passed without parameter(strict) and value has no non-alphanumeric characters', () => {
 
         const testField = "test"
 
         const errors = validator.validate({
-            testField: [testField, 'isAlphanumeric(false)'],
+            testField: [testField, 'isAlphaNumeric(false)'],
         });
 
         expect(errors.isValid).toBe(true)
     })
 
-    it('returns isValid as truie if isAlphanumeric is passed without parameter(strict) and value has space with alphanumeric characters', () => {
+    it('returns isValid as truie if isAlphaNumeric is passed without parameter(strict) and value has space with alphanumeric characters', () => {
 
         const testField = "test test"
 
         const errors = validator.validate({
-            testField: [testField, 'isAlphanumeric(false)'],
+            testField: [testField, 'isAlphaNumeric(false)'],
         });
 
         expect(errors.isValid).toBe(true)
     })
 
-    it('returns isValid as false if isAlphanumeric(true) is passed with parameter(strict) and value has space with isAlphanumeric characters', () => {
+    it('returns isValid as false if isAlphaNumeric(true) is passed with parameter(strict) and value has space with isAlphaNumeric characters', () => {
 
         const testField = "test test "
 
         const errors = validator.validate({
-            testField: [testField, 'isAlphanumeric(true)'],
+            testField: [testField, 'isAlphaNumeric(true)'],
         });
 
         expect(errors.isValid).toBe(false)
@@ -297,4 +297,28 @@ describe('validate',()=>{
 
 				expect(errors.isValid).toBe(true)
 		})
+
+    it('returns isValid as false if `UserName` is passed and value has spaces', () => {
+      const testField = "test test "
+      const errors = validator.validate({
+        testField: [testField, 'isValidUserName'],
+      });
+      expect(errors.isValid).toBe(false)
+    })
+
+    it('returns isValid as false if `UserName` is passed and value has spacial char', () => {
+      const testField = "testtest@"
+      const errors = validator.validate({
+          testField: [testField, 'isValidUserName'],
+      });
+      expect(errors.isValid).toBe(false)
+    })
+
+    it('returns isValid as true if `UserName` is passed and value is valid ', () => {
+      const testField = "testtest"
+      const errors = validator.validate({
+          testField: [testField, 'isValidUserName'],
+      });
+      expect(errors.isValid).toBe(true)
+    })
 })
