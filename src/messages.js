@@ -29,6 +29,4 @@ export const message = {
     invalid_string: "passed string does not match the valid pattern",
 
     invalid_url: "not a valid url",
-
-    invalid_username: "invalid username",
 };
