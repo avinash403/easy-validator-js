@@ -187,7 +187,7 @@ export function Validator(getMessage) {
      * @param {string|boolean} strict           if strict is passed as true, it will not allow any space in the string
      * @param {string} value            value input by user
      * */
-    function isAlphanumeric(strict = false, value) {
+    function isAlphaNumeric(strict = false, value) {
         value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
 
@@ -300,5 +300,21 @@ export function Validator(getMessage) {
         if(!url.test(value)){
             return getMessage('invalid_url');
         }
+    }
+
+    /**
+    * @param string value
+    * @return string
+    * username may only contain alphanumeric characters or hyphens.
+    * username cannot have multiple consecutive hyphens.
+    * username cannot begin or end with a hyphen.
+    * Minimum is 2 characters
+    * Maximum is 50 characters.
+    */
+    function isValidUserName(value) {
+      var regex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){1,49}$/i;
+       if(!value.match(regex)) {
+        return getMessage("invalid_username");
+       }
     }
 }
