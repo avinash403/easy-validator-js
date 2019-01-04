@@ -287,7 +287,7 @@ describe('validate',()=>{
 
     })
 
-		it('passes url validation fot valid url', () => {
+		it('passes url validation for valid url', () => {
 
 				const testField = "https://stackoverflow.com"
 
@@ -297,6 +297,18 @@ describe('validate',()=>{
 
 				expect(errors.isValid).toBe(true)
 		})
+
+    it('passes url validation for empty field', () => {
+
+				const testField = ""
+
+				const errors = validator.validate({
+						testField: [testField,'isUrl'],
+				});
+
+				expect(errors.isValid).toBe(true)
+		})
+
 
     it('returns isValid as false if `UserName` is passed and value has spaces', () => {
       const testField = "test test "
