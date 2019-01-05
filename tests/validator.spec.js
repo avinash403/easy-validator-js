@@ -333,4 +333,13 @@ describe('validate',()=>{
       });
       expect(errors.isValid).toBe(true)
     })
+
+    it('returns isValid as true if `userName` is passed and value empty ', () => {
+      const testField = ""
+      const errors = validator.validate({
+          testField: [testField, 'isValidUserName'],
+      });
+      expect(errors.isValid).toBe(true)
+      expect(errors.errors).toEqual({})
+    })
 })

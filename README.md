@@ -68,6 +68,7 @@ function validateTestData(data)
 * isMobile
 * isValidWithRegex
 * isUrl
+* isValidUserName
 
 ### Default Messages
 ```
@@ -86,6 +87,7 @@ function validateTestData(data)
 * invalid_mobile 		: invalid mobile number
 * invalid_string         : passed string does not match the valid pattern
 * invalid_url       : not a valid url
+* invalid_username: invalid username,
 ```
 
 
@@ -121,6 +123,7 @@ const validator = new Validator(getMessage);
 * invalid_mobile
 * invalid_string
 * invalid_url
+* invalid_username
 ```
 
 Now, you can give whatever value you want to give to when any of the above key is passed. The easiet way of doing it is by creating and importing a javascript array which has keys as above and value as your custom message.
@@ -157,6 +160,8 @@ export const customMessages = {
     invalid_string: "custom message",
 
     invalid_url: "custom message",
+
+    invalid_username: "custom message",
 };
 ```
 
