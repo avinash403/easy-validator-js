@@ -13,7 +13,10 @@
     "test": "jest",
     "watch-test": "npm run test -- --watch --notify",
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "coverage": "jest --coverage",
+    "test:coverage": "npm test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
   },
   "homepage": "https://github.com/avinash403/easy-validator-js#readme",
   "dependencies": {
+    "jest-coverage-badges": "^1.1.2",
     "validator": "^10.10.0"
   },
   "devDependencies": {
@@ -43,6 +47,11 @@
     "moduleDirectories": [
       "src",
       "node_modules"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
     ]
   }
 }

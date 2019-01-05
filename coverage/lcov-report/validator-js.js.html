@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for validator-js.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> validator-js.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.27% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>70/93</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.06% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>36/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70.83% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>17/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.27% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>70/93</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import NpmValidator from 'validator';
+import isEmpty from 'lodash/isEmpty';
+import { message } from './messages';
+&nbsp;
+/**
+ * @param Function  handles messages
+ */
+export function Validator(getMessage) {
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (getMessage === undefined) {
+        getMessage = function(key) {
+            return message[key]
+        }
+    }
+&nbsp;
+    /** Validate takes array of field, value and property and validate values against the properties
+     *
+     *  @param array array           object array with fieldName, value and validation rules
+     *                               array = {
+     *                                    field1 :[value1, property1, property2],
+     *                                    field2:[value2,property1,property2,property3]
+     *                                    }
+     *  @return {object, boolean}    {(key,error),true/false}.
+     *                               IF there error field is empty, isValid will be true ELSE false
+     */
+    this.validate = function(array) {
+        const errors = {};
+&nbsp;
+        Object.keys(array).forEach(function(field) {
+&nbsp;
+            //adding '' after array[field][0] will make it a string. npm Validator only validates string
+            const value = array[field][0] + '';
+&nbsp;
+            //skipping first element of the array. i.e value
+            array[field].shift();
+&nbsp;
+            array[field].every(property =&gt; {
+&nbsp;
+                // check if property is an object
+                // if yes, take its key as validation name and value as message
+                if(typeof property === 'object'){
+&nbsp;
+                    //getting key and value of the object
+                    const validationProperty = Object.keys(property)[0];
+                    const validationMessage = Object.values(property)[0];
+&nbsp;
+                    const error = getValidationForProperty(value, validationProperty);
+&nbsp;
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (error !== undefined) {
+                        errors[field] = validationMessage;
+                        return false;
+                    }
+                }
+                else {
+&nbsp;
+                    const error = getValidationForProperty(value, property);
+&nbsp;
+                    if (error !== undefined) {
+                        errors[field] = error;
+                        return false
+                    }
+                }
+                return true
+&nbsp;
+            });
+        });
+&nbsp;
+        return {
+            errors,
+            isValid: isEmpty(errors)
+        };
+    }
+&nbsp;
+    /**
+     * encodes string containing special characters
+     * @param {string} value  string   that needs to be encoded
+     * @return {string} encoded string
+     */
+    function encodeStringWithSpecialChars(value){
+&nbsp;
+        //encoding the string to handle special characters
+        let formattedValue = encodeURIComponent(value);
+&nbsp;
+        //NOTE: as encodeURIComponent doesn't encode apostrophe, we manually do it
+        //replacing apostrophe with %27(as standard)
+        formattedValue = formattedValue.replace(new RegExp('\'','g'),'%27');
+&nbsp;
+        return formattedValue;
+    }
+&nbsp;
+    /**
+     * Decodes string containing special characters
+     * @param  {string} value   encoded string
+     * @return {string}         decoded string
+     */
+    function decodeStringWithSpecialChars(value){
+&nbsp;
+        //replacing %27 with apostrophe
+        let formattedValue = value.replace(new RegExp('%27','g'),'\'');
+&nbsp;
+        //decoding uri encoded string
+        formattedValue = decodeURIComponent(formattedValue);
+&nbsp;
+        return formattedValue;
+    }
+&nbsp;
+    /** eval is converting string into function call
+     * @param String|Number value     value, which has to be validated
+     * @param String property         property against which value will be validated
+     * @return String                 error msg from helper functions
+     * */
+    function getValidationForProperty(value, property) {
+&nbsp;
+        //replacing apostrophe with escape charcter and epostrophe(\'')
+        const formattedValue = encodeStringWithSpecialChars(value);
+&nbsp;
+        if (property.indexOf('(') &gt; -1) {
+&nbsp;
+            /*
+             * for eg. property = someFunction(arg1)
+             * it will be converted into someFunction(arg1,value)
+             **/
+            const functionWithArgument = property.replace(')', ',' + '\'' + formattedValue + '\'' + ')');
+&nbsp;
+            return eval(functionWithArgument);
+        }
+        return eval(`${property}('${formattedValue}')`);
+    }
+&nbsp;
+&nbsp;
+    function isRequired(value) {
+        value = decodeStringWithSpecialChars(value);
+&nbsp;
+        if (NpmValidator.isEmpty(value)) {
+            return getMessage("this_field_is_required");
+        }
+    }
+&nbsp;
+&nbsp;
+    function max(maxLength, value) {
+        value = decodeStringWithSpecialChars(value);
+        if (!NpmValidator.isLength(value, 0, maxLength)) {
+            return getMessage("max_length_exceeded", maxLength);
+        }
+    }
+&nbsp;
+    function min(minLength, value) {
+        value = decodeStringWithSpecialChars(value);
+        if (!NpmValidator.isLength(value, minLength, 100)) {
+            return getMessage("not_enough_length", minLength);
+        }
+    }
+&nbsp;
+    function isEmail(value) {
+        value = decodeStringWithSpecialChars(value);
+        if (!NpmValidator.isEmail(value)) {
+            return getMessage("invalid_email");
+        }
+    }
+&nbsp;
+    /**
+     * USAGE : write it like a string   in 'isAlpha' or isAlpha(true)
+     * @param {string|boolean} strict   if strict is passed as true, it will not allow any space in the string
+     * @param {string} value            value input by user
+     * */
+    function isAlpha(strict = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> value) {
+        value = decodeStringWithSpecialChars(value);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!NpmValidator.isEmpty(value)) {
+&nbsp;
+            //making a copy of value to avoid mutating the original copy
+            let valueCopy = value.slice(0)
+&nbsp;
+            //if strict is not true, it is going to trim all spaces and validate it further
+            if (strict !== true) {
+                valueCopy = valueCopy.replace(/ /g, '')
+            }
+&nbsp;
+            //allow space
+            if (!NpmValidator.isAlpha(valueCopy)) {
+                return getMessage("not_alpha");
+            }
+        }
+    }
+&nbsp;
+    /**
+     * USAGE : write it like a string in 'isAlphanumeric' or isAlphanumeric(true)
+     * @param {string|boolean} strict           if strict is passed as true, it will not allow any space in the string
+     * @param {string} value            value input by user
+     * */
+    function isAlphaNumeric(strict = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> value) {
+        value = decodeStringWithSpecialChars(value);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!NpmValidator.isEmpty(value)) {
+&nbsp;
+            //making a copy of value to avoid mutating the original copy
+            let valueCopy = value.slice(0)
+&nbsp;
+            //if strict is not true, it is going to trim all spaces and validate it further
+            if (strict !== true) {
+                valueCopy = valueCopy.replace(/ /g, '')
+            }
+&nbsp;
+            if (!NpmValidator.isAlphanumeric(valueCopy)) {
+                return getMessage("not_alphanumeric");
+            }
+        }
+    }
+&nbsp;
+    function <span class="fstat-no" title="function not covered" >isNumber(</span>value) {
+<span class="cstat-no" title="statement not covered" >        value = decodeStringWithSpecialChars(value);</span>
+<span class="cstat-no" title="statement not covered" >        if (!NpmValidator.isEmpty(value)) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!NpmValidator.isInt(value)) {</span>
+<span class="cstat-no" title="statement not covered" >                return getMessage("invalid_number");</span>
+            }
+        }
+    }
+&nbsp;
+    /** validates integer. (minimum value by default is -1000000)
+     * @param maxVal =&gt; maximum value allowed for value
+     * @param value =&gt; input value
+     */
+    function <span class="fstat-no" title="function not covered" >maxValue(</span>maxVal, value) {
+<span class="cstat-no" title="statement not covered" >        value = decodeStringWithSpecialChars(value);</span>
+<span class="cstat-no" title="statement not covered" >        if (!NpmValidator.isEmpty(value)) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!(value &lt;= maxVal)) {</span>
+<span class="cstat-no" title="statement not covered" >                return getMessage("more_than_max_value");</span>
+            }
+        }
+    }
+&nbsp;
+    /** validates integer.(maximum value by default is 1000000)
+     * @param minVal =&gt; minimum value allowed for value
+     * @param value =&gt; input value
+     */
+    function <span class="fstat-no" title="function not covered" >minValue(</span>minVal, value) {
+<span class="cstat-no" title="statement not covered" >        value = decodeStringWithSpecialChars(value);</span>
+        const stringValue = <span class="cstat-no" title="statement not covered" >`${value}`;</span>
+<span class="cstat-no" title="statement not covered" >        if (!NpmValidator.isEmpty(stringValue)) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!(value &gt;= minVal)) {</span>
+<span class="cstat-no" title="statement not covered" >                return getMessage("not_enough_length");</span>
+            }
+        }
+    }
+&nbsp;
+    function <span class="fstat-no" title="function not covered" >passwordMatch(</span>password, passwordConfirm) {
+<span class="cstat-no" title="statement not covered" >        if (!NpmValidator.equals(password, passwordConfirm)) {</span>
+<span class="cstat-no" title="statement not covered" >            return getMessage("password_does_not_match");</span>
+        }
+    }
+&nbsp;
+&nbsp;
+    function <span class="fstat-no" title="function not covered" >shouldNotMatch(</span>oldPassword, newPassword) {
+<span class="cstat-no" title="statement not covered" >        if (NpmValidator.equals(oldPassword, newPassword)) {</span>
+<span class="cstat-no" title="statement not covered" >            return getMessage("password_is_same");</span>
+        }
+    }
+&nbsp;
+    function <span class="fstat-no" title="function not covered" >isDate(</span>value) {
+<span class="cstat-no" title="statement not covered" >        value = decodeStringWithSpecialChars(value);</span>
+<span class="cstat-no" title="statement not covered" >        if (!NpmValidator.isISO8601(value)) {</span>
+<span class="cstat-no" title="statement not covered" >            return getMessage("invalid_date");</span>
+        }
+    }
+&nbsp;
+    /**
+     * @param Boolean isMobileValid     It is sent by the state. So if it is false it returns the error message
+     * @param Any     value             Not required but it is better to just write it in the function rather than recreating a logic
+     * @return string                   Validation message
+     * */
+    function <span class="fstat-no" title="function not covered" >isMobile(</span>isMobileValid, value) {
+<span class="cstat-no" title="statement not covered" >        value = decodeStringWithSpecialChars(value);</span>
+<span class="cstat-no" title="statement not covered" >        if (isMobileValid !== 'true') {</span>
+<span class="cstat-no" title="statement not covered" >            return getMessage("invalid_mobile");</span>
+        }
+    }
+&nbsp;
+    /**
+     * Compare the string with regex pattern and tells if string is valid
+     * @return {string} [description]
+     */
+    function isValidWithRegex(regex,value)
+    {
+        value = decodeStringWithSpecialChars(value);
+&nbsp;
+        if(value.search(regex) === -1){
+            return getMessage('invalid_string');
+        }
+    }
+&nbsp;
+    /**
+     * If the passed value is a valid url
+     * @param  {String}  value [description]
+     * @return {String|undefined}      if invalid, a message else nothing
+     */
+    function isUrl(value){
+        value = decodeStringWithSpecialChars(value);
+&nbsp;
+        var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&amp;/=%]*)?$";
+        var url = new RegExp(regexQuery,"i");
+&nbsp;
+        if(!url.test(value) &amp;&amp; !NpmValidator.isEmpty(value)){
+            return getMessage('invalid_url');
+        }
+    }
+&nbsp;
+    /**
+    * @param string value
+    * @return string
+    * username may only contain alphanumeric characters or hyphens.
+    * username cannot have multiple consecutive hyphens.
+    * username cannot begin or end with a hyphen.
+    * Minimum is 2 characters
+    * Maximum is 50 characters.
+    */
+    function isValidUserName(value) {
+      var regex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){1,49}$/i;
+      if (!NpmValidator.isEmpty(value) &amp;&amp; !value.match(regex)) {
+          return getMessage("invalid_username");
+      }
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jan 05 2019 11:14:39 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
