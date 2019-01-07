@@ -1,3 +1,5 @@
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/avinash403/easy-validator-js/jest-codecov-testing.svg?style=flat-square)](https://codecov.io/gh/avinash403/easy-validator-js/)
+
 # Easy ValidatorJs
 Provides an easy way to validate forms and gives custom error messages.
 Ideal with frameworks like *ReactJs* with *Redux* and *VueJs* with *Vuex*
