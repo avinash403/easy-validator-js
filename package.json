@@ -12,8 +12,9 @@
   "scripts": {
     "test": "jest",
     "watch-test": "npm run test -- --watch --notify",
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "npm run build"
+    "build": "npm test -- --coverage && codecov --token=06dae06d-c18c-4594-9cfc-05372168b3e6 && babel src --presets babel-preset-es2015 --out-dir dist",
+    "prepublish": "npm run build && codecov --token=06dae06d-c18c-4594-9cfc-05372168b3e6",
+    "codecov-publish":"codecov --token=06dae06d-c18c-4594-9cfc-05372168b3e6"
   },
   "repository": {
     "type": "git",
@@ -44,7 +45,6 @@
     "moduleDirectories": [
       "src",
       "node_modules"
-    ],
-    "collectCoverage":true
+    ]
   }
 }
