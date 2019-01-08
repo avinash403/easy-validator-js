@@ -1,12 +1,14 @@
 # Easy ValidatorJs
 
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/avinash403/easy-validator-js/master.svg?style=flat-square)](https://codecov.io/gh/avinash403/easy-validator-js/)
+[![](https://img.shields.io/npm/dt/easy-validator-js.svg?style=flat-square)](https://www.npmjs.com/package/easy-validator-js)
+[![](https://img.shields.io/snyk/vulnerabilities/npm/easy-validator-js.svg?style=flat-square)](https://www.npmjs.com/package/easy-validator-js)
 
 Provides an easy way to validate forms and gives custom error messages.
 Ideal with frameworks like *ReactJs* with *Redux* and *VueJs* with *Vuex*
 
 ### Motivation
-Defining logic for validation in components gets messy sometimes as your compoenent is already doing a lot of things. The idea is to have a central place where all the validation related logic lives and component has to only call that logic and listen to it.
+Defining logic for validation in components gets messy sometimes as your component is already doing a lot of things. The idea is to have a central place where all the validation related logic lives and component has to only call that logic and listen to it.
 ```src
     components
         ExampleForm.js
