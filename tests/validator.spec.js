@@ -332,7 +332,7 @@ describe('validate',()=>{
           testField: [testField, 'isValidUserName'],
       });
       expect(errors.isValid).toBe(true)
-    })
+    });
 
     it('returns isValid as true if `userName` is passed and value empty ', () => {
       const testField = ""
@@ -341,5 +341,101 @@ describe('validate',()=>{
       });
       expect(errors.isValid).toBe(true)
       expect(errors.errors).toEqual({})
-    })
+    });
+
+    it('returns isValid as false if `isNumber` is validated against non-number ', () => {
+      const testField = "test String"
+      const errors = validator.validate({
+          testField: [testField, 'isNumber'],
+      });
+      expect(errors.isValid).toBe(false)
+    });
+
+    it('returns isValid as true if `isNumber` is validated against a valid number but as string', () => {
+      const testField = "8089"
+      const errors = validator.validate({
+          testField: [testField, 'isNumber'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as true if `isNumber` is validated against a valid number as number', () => {
+      const testField = 8089
+      const errors = validator.validate({
+          testField: [testField, 'isNumber'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as true if `isNumber` is validated against an empty string', () => {
+      const testField = ''
+      const errors = validator.validate({
+          testField: [testField, 'isNumber'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as false if `maxValue` is validated against an invalid value', () => {
+      const testField = '21'
+      const errors = validator.validate({
+          testField: [testField, 'maxValue(20)'],
+      });
+      expect(errors.isValid).toBe(false)
+    });
+
+    it('returns isValid as true if `maxValue` is validated against a valid value', () => {
+      const testField = '19'
+      const errors = validator.validate({
+          testField: [testField, 'maxValue(20)'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as false if `minValue` is validated against an invalid value', () => {
+      const testField = '19'
+      const errors = validator.validate({
+          testField: [testField, 'minValue(20)'],
+      });
+      expect(errors.isValid).toBe(false)
+    });
+
+    it('returns isValid as true if `minValue` is validated against an valid value', () => {
+      const testField = '21'
+      const errors = validator.validate({
+          testField: [testField, 'minValue(20)'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as true if `passwordMatch` is validated against a non matching password', () => {
+      const testField = 'second_password'
+      const errors = validator.validate({
+          testField: [testField, 'passwordMatch("first_password")'],
+      });
+      expect(errors.isValid).toBe(false)
+    });
+
+    it('returns isValid as true if `passwordMatch` is validated against a matching password', () => {
+      const testField = 'second_password'
+      const errors = validator.validate({
+          testField: [testField, 'passwordMatch("second_password")'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
+
+    it('returns isValid as false if `shouldNotMatch` is validated against a matching value', () => {
+      const testField = 'first_value'
+      const errors = validator.validate({
+          testField: [testField, 'shouldNotMatch("first_value")'],
+      });
+      expect(errors.isValid).toBe(false)
+    });
+
+    it('returns isValid as true if `shouldNotMatch` is validated against a non matching value', () => {
+      const testField = 'second_value'
+      const errors = validator.validate({
+          testField: [testField, 'shouldNotMatch("first_value")'],
+      });
+      expect(errors.isValid).toBe(true)
+    });
 })

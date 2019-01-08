@@ -205,6 +205,11 @@ export function Validator(getMessage) {
         }
     }
 
+    /**
+     * Validates if a value is number or not
+     * @param  Number  value [description]
+     * @return String
+     */
     function isNumber(value) {
         value = decodeStringWithSpecialChars(value);
         if (!NpmValidator.isEmpty(value)) {
@@ -214,7 +219,8 @@ export function Validator(getMessage) {
         }
     }
 
-    /** validates integer. (minimum value by default is -1000000)
+    /**
+     * validates integer. (minimum value by default is -1000000)
      * @param maxVal => maximum value allowed for value
      * @param value => input value
      */
@@ -241,6 +247,12 @@ export function Validator(getMessage) {
         }
     }
 
+    /**
+     * If two passed passwords are matching
+     * @param  {String} password
+     * @param  {String} passwordConfirm
+     * @return {String|undefined}
+     */
     function passwordMatch(password, passwordConfirm) {
         if (!NpmValidator.equals(password, passwordConfirm)) {
             return getMessage("password_does_not_match");
@@ -248,21 +260,34 @@ export function Validator(getMessage) {
     }
 
 
+    /**
+     * If two values are same or not
+     * @param  {String} oldPassword [description]
+     * @param  {String} newPassword [description]
+     * @return {String|undefined}
+     */
     function shouldNotMatch(oldPassword, newPassword) {
         if (NpmValidator.equals(oldPassword, newPassword)) {
             return getMessage("password_is_same");
         }
     }
 
+    /**
+     * Checks if a value is a valid date or not
+     * TODO: use moment for date validation
+     * @param  {String}  value
+     * @return {Boolean}
+     */
     function isDate(value) {
         value = decodeStringWithSpecialChars(value);
-        if (!NpmValidator.isISO8601(value)) {
+        if (!NpmValidator.isISO8601(value) && !NpmValidator.isRFC3339(value)) {
             return getMessage("invalid_date");
         }
     }
 
     /**
      * @param Boolean isMobileValid     It is sent by the state. So if it is false it returns the error message
+     * TODO: Correct this validation
      * @param Any     value             Not required but it is better to just write it in the function rather than recreating a logic
      * @return string                   Validation message
      * */
