@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/avinash403/easy-validator-js#readme",
   "dependencies": {
-    "validator": "^10.10.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
